@@ -8,5 +8,6 @@ export const store = configureStore({
         catalog: catalogReducer,
         cart: cartReducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+        .concat(localStorageMiddleware),
 })

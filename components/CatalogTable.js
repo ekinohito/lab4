@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Table} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteGood} from "../redux/catalog";
+import {addItem} from "../redux/cart";
 
 export default function CatalogTable() {
     const catalog = useSelector(state => state.catalog)
@@ -20,9 +21,19 @@ export default function CatalogTable() {
             <th>{index + 1}</th>
             <td>{value.name}</td>
             <td><span>{value.price}</span></td>
-            <td>
-                <Button variant="outline-dark" className="rounded-pill m-1 my-sm-0"><i className={"bi-cart"}/></Button>
-                <Button variant="danger" className="m-1 my-sm-0" onClick={() => dispatch(deleteGood(index))}>Delete</Button>
+            <td className="float-end">
+                <Button
+                    variant="outline-dark"
+                    className="rounded-pill m-1 my-sm-0"
+                    onClick={() => dispatch(addItem(value.id))}>
+                    <i className={"bi-cart"}/> В корзину
+                </Button>
+                <Button
+                    variant="danger"
+                    className="m-1 my-sm-0"
+                    onClick={() => dispatch(deleteGood(index))}>
+                    <i className="bi-trash"/> Из каталога
+                </Button>
             </td>
         </tr>)}
         </tbody>
