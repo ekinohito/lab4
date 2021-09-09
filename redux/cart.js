@@ -18,6 +18,9 @@ const cartSlice = createSlice({
             } else {
                 delete state[action.payload]
             }
+        },
+        clearCart: state => {
+            return {}
         }
     },
     extraReducers: builder => builder.addCase(deleteGood, (state, action) => {
@@ -26,4 +29,4 @@ const cartSlice = createSlice({
 })
 
 export const cartReducer = cartSlice.reducer
-export const {addItem, removeItem} = cartSlice.actions
+export const {addItem, removeItem, clearCart} = cartSlice.actions

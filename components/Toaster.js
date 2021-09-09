@@ -10,7 +10,7 @@ export default function Toaster() {
         {toasts.map((value, index) =>
             <Toast onClose={() => dispatch(removeToast(index))} animation>
                 <Toast.Header><h4><Badge bg={value.bg}>{value.title}</Badge></h4></Toast.Header>
-                <Toast.Body>{value.text}</Toast.Body>
+                <Toast.Body><p className="fs-4">{value.text}</p></Toast.Body>
             </Toast>)}
     </ToastContainer>
 }
