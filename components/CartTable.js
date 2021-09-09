@@ -2,6 +2,7 @@ import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {Button, Table} from "react-bootstrap";
 import {addItem, removeItem} from "../redux/cart";
+import Cell from "./Cell";
 
 export default function CartTable() {
     const cart = useSelector(state => state.cart)
@@ -19,8 +20,8 @@ export default function CartTable() {
         <tbody>
         {catalog.filter(value => cart[value.id]).map((value, index) => <tr key={value.id}>
             <th>{index + 1}</th>
-            <td>{value.name}</td>
-            <td><span>{value.price}</span></td>
+            <Cell>{value.name}</Cell>
+            <Cell><span>{value.price}</span></Cell>
             <td>
                 <Button
                     variant="outline-dark"

@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {deleteGood} from "./catalog";
 
 const cartSlice = createSlice({
     name: "cart",
@@ -18,7 +19,10 @@ const cartSlice = createSlice({
                 delete state[action.payload]
             }
         }
-    }
+    },
+    extraReducers: builder => builder.addCase(deleteGood, (state, action) => {
+        delete state[action.payload.id]
+    })
 })
 
 export const cartReducer = cartSlice.reducer

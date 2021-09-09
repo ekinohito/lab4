@@ -6,9 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 export default function NewGoodForm() {
     const [price, setPrice] = useState(1000)
     const [name, setName] = useState("")
-    const isUnique = useSelector(state => state.catalog.
-    map(value => value.name !== name).
-    reduce((acc, value) => acc && value, true))
+    const isUnique = useSelector(state => state.catalog.every(value => value.name !== name))
     const dispatch = useDispatch()
     const setIfValid = (newPrice) => setPrice(isNaN(parseInt(newPrice))?price:parseInt(newPrice))
     return <Form>

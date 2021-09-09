@@ -3,8 +3,11 @@ import Head from "next/head";
 import Header from "../components/Header";
 import {Container} from "react-bootstrap";
 import CartTable from "../components/CartTable";
+import {useSelector} from "react-redux";
+import Empty from "../components/Empty";
 
 export default function cart() {
+    const isEmpty = useSelector(state => Object.keys(state.cart).length <= 0)
     return <>
         <Head>
             <title>Корзина</title>
@@ -14,7 +17,8 @@ export default function cart() {
         <Header/>
         <Container>
             <main>
-                <CartTable/>
+                <h1 className="mb-5">Корзина</h1>
+                {isEmpty?<Empty/>:<CartTable/>}
             </main>
         </Container>
     </>

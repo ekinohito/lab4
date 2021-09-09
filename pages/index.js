@@ -4,8 +4,11 @@ import {Container} from "react-bootstrap";
 import NewGoodForm from "../components/NewGoodForm";
 import React from "react";
 import CatalogTable from "../components/CatalogTable";
+import {useSelector} from "react-redux";
+import Empty from "../components/Empty";
 
 export default function Home() {
+    const isEmpty = useSelector(state => state.catalog.length <= 0)
     return (
         <>
             <Head>
@@ -16,9 +19,10 @@ export default function Home() {
             <Header/>
             <Container>
                 <main>
+                    <h1 className="mb-3">Каталог</h1>
                     <NewGoodForm/>
                     <div className="my-5"/>
-                    <CatalogTable/>
+                    {isEmpty?<Empty/>:<CatalogTable/>}
                 </main>
             </Container>
         </>
