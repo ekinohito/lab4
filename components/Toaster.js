@@ -8,7 +8,7 @@ export default function Toaster() {
     const dispatch = useDispatch()
     return <ToastContainer position="bottom-end">
         {toasts.map((value, index) =>
-            <Toast onClose={() => dispatch(removeToast(index))} animation>
+            <Toast key={index} onClose={() => dispatch(removeToast(index))} animation>
                 <Toast.Header><h4><Badge bg={value.bg}>{value.title}</Badge></h4></Toast.Header>
                 <Toast.Body><p className="fs-4">{value.text}</p></Toast.Body>
             </Toast>)}
