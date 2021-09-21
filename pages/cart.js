@@ -8,7 +8,7 @@ import Empty from "../components/Empty";
 import Total from "../components/Total";
 import Toaster from "../components/Toaster";
 
-export default function cart() {
+export default function Cart() {
     const isEmpty = useSelector(state => Object.keys(state.cart).length <= 0)
     return <>
         <Head>
